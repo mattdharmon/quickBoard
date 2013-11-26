@@ -5,4 +5,15 @@ block content
     div(class="row")
         h1= title
         p Welcome to #{title}
-
+        p This is will create a message board that will wipe all data once all 
+          | users leaves the board.
+          
+        p CLick on the "Create/Join" button to get started. Leave the text field
+            | blank if you want a random generated board. If you enter a value 
+            | into the text field, you will create a board with that name, or
+            | join one with that name if it has already been created.
+        div(class="row collapse")
+            div(class="large-9 small-9 columns")
+                input(type="text" id="create_custom_board")
+            div(class="large-3 small-3 columns")
+                input(type="button" class="button postfix" value="Create/Join" id="create_custom_button")

@@ -3,11 +3,9 @@ html
         title= title
         link(rel='stylesheet' href='/stylesheets/libs/foundation/css/foundation.min.css')
         link(rel='stylesheet' href='/stylesheets/src/main.css')
-        script(src='/javascripts/libs/foundation/js/modernizr.js')
+        script(src='/javascripts/libs/foundation/js/vendor/jquery.js')
         block head
     body
-        script(src='/javascripts/libs/foundation/js/vendor/jquery.js')
-        script(src='/javascripts/libs/foundation/js/foundation.min.js')
         nav(class="top-bar")
             ul(class="title-area")
                 li(class="name")
@@ -20,5 +18,3 @@ html
                         a(href="/board/") Create New Board
                     li(class="divider hide-for-small")
         block content
-        script
-            $(document).foundation();
