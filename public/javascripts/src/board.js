@@ -2,7 +2,7 @@ $(document).ready(function() {
     
     $('#board').append('<div id="topics"></div>');
 
-    var socket = io.connect('http://localhost:3000');
+    var socket = io.connect();
     
     socket.on('new_session', function(session) {
         socket.emit('create_session', session);
