@@ -151,15 +151,17 @@ io.sockets.on('connection', function(socket) {
 
     //Set up all the variables and nodes when a user joins.
     socket.on('create_session', function(session) {
-        fireSession = fireRoot.child(session);
-        fireUsers = fireSession.child('users');
-        fireUsers.on('child_added', addUser);
-        fireUsers.on('child_removed', removeUser);
-        fireUsers.on('value', checkUserCount);
-        fireBoard = fireSession.child('topics');
-        fireBoard.on('child_added', addTopic);
-        socket.sessionToken = session;
-        socket.emit('get_new_user');
+        if (session) {
+            fireSession = fireRoot.child(session);
+            fireUsers = fireSession.child('users');
+            fireUsers.on('child_added', addUser);
+            fireUsers.on('child_removed', removeUser);
+            fireUsers.on('value', checkUserCount);
+            fireBoard = fireSession.child('topics');
+            fireBoard.on('child_added', addTopic);
+            socket.sessionToken = session;
+            socket.emit('get_new_user');
+        }
     });
 
     //Update the users on the board.
@@ -175,8 +177,7 @@ io.sockets.on('connection', function(socket) {
                 if (error) {
                     console.log(error);
                 }
-                fireUsers.off('child_removed', removeUser);
-                fireUsers.off('child_added', addUser);
+                fireRoot.goOffline();
             });
         }
     });
