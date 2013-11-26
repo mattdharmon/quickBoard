@@ -177,7 +177,8 @@ io.sockets.on('connection', function(socket) {
                 if (error) {
                     console.log(error);
                 }
-                fireRoot.goOffline();
+                fireUsers.goOffline();
+                fireBoard.goOffline();
             });
         }
     });
