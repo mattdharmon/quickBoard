@@ -1,0 +1,6 @@
+firebase:
+    url: "https://gingertech.firebaseio.com/message_board_app"
+    key: 
+
+server:
+    port: 3000
