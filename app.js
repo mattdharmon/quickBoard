@@ -103,6 +103,8 @@ io.sockets.on('connection', function(socket) {
         socket.emit('remove_user', snapShot.name());
     };
 
+    //This will check if there are any more users for the session, if not
+    //delete all the data for that session.
     var checkUserCount = function(snapShot) {
         //If no more users for this session, remove all data
         //in this session from firebase.
