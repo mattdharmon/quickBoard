@@ -170,13 +170,15 @@ io.sockets.on('connection', function(socket) {
 
     //remove the user upon disconnection
     socket.on('disconnect', function() {
-        fireUsers.child(socket.userToken).remove(function(error) {
-            if (error) {
-                console.log(error);
-            }
-            fireUsers.off('child_removed', removeUser);
-            fireUsers.off('child_added', addUser);
-        });
+        if (socket.userToken) {
+            fireUsers.child(socket.userToken).remove(function(error) {
+                if (error) {
+                    console.log(error);
+                }
+                fireUsers.off('child_removed', removeUser);
+                fireUsers.off('child_added', addUser);
+            });
+        }
     });
 
     //When a new topic item is created.
