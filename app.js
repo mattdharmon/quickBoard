@@ -177,11 +177,11 @@ io.sockets.on('connection', function(socket) {
             fireUsers.child(socket.userToken).remove(function(error) {
                 if (error) {
                     console.log(error);
+                }
                 fireUsers.off('child_added', addUser);
                 fireUsers.off('child_removed', removeUser);
                 fireUsers.off('value', checkUserCount);
                 fireBoard.off('child_added', addTopic);
-                }
             });
         }
     });
