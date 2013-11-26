@@ -3,3 +3,4 @@ config/default.yaml
 *.swp
 *.swo
 *.swn
+*.*~
