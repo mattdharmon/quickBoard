@@ -177,6 +177,11 @@ io.sockets.on('connection', function(socket) {
                     console.log(error);
                 }
             });
+
+            fireUsers.off('child_added', addUser);
+            fireUsers.off('child_removed', removeUser);
+            fireUsers.off('value', checkUserCount);
+            fireBoard.off('child_added', addTopic);
         }
     });
 
