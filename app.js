@@ -67,6 +67,8 @@ app.get('/board/:sessionParam', function(request, response) {
 //The user information.
 var usernames = {};
 
+//Config the transports.
+io.set('transports', ['xhr-polling']);
 //The io events.
 io.sockets.on('connection', function(socket) {
  
