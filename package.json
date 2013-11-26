@@ -1,0 +1,20 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.4",
+    "jade": "*",
+    "less-middleware": "*",
+    "socket.io": "~0.9.16",
+    "firebase": "~0.6.14",
+    "uuid": "~1.4.1",
+    "underscore": "~1.5.2",
+    "validator": "~2.0.0",
+    "config": "~0.4.3",
+    "yaml": "~0.2.3"
+  }
+}

@@ -1,0 +1,21 @@
+extends layout
+block head
+    link(rel='stylesheet' href='/stylesheets/src/main.css')
+    link(rel='sytlesheet' href='/stylesheets/libs/foundation-icons/foundation-icons.css')
+    link(rel='sytlesheet' href='/stylesheets/libs/foundation-icons/foundation-icons.svg')
+    script(src='/socket.io/socket.io.js')  
+block content
+    script(src='/javascripts/src/board.js')    
+    div(class="row")
+        h1 Welcome to the Board!
+    div(class="row")
+        div(class="small-2 large-2 columns")
+            ul(class="pricing-table" id="users")
+                li(class="title") Users
+        
+        div(class="small-10 large-10 columns" id="board")
+            div(class="addTopic row collapse")
+                div(class="small-9 large-9 columns")
+                    input(type="text" id="topicInput")
+                div(class="large-3 small-3 columns")
+                    input(type="button" id="submitTopic" class="button postfix" value="Add Topic") 
