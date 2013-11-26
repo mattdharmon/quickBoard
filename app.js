@@ -24,7 +24,7 @@ var fireRoot = new Firebase(configFirebase.url);
 
 //start the server;
 server.listen(configServer.port, function() {
-    console.log('Server listening on on port 3000');
+    console.log('Server listening on on port ' + configServer.port);
 });
 
 //The routes.
@@ -33,7 +33,7 @@ var routes = require('./routes'),
     board = require('./routes/board')(io);
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || configServer.port);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.set('view options', {layout: true});
