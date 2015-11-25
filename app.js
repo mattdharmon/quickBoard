@@ -37,18 +37,17 @@ app.set('port', process.env.PORT || configServer.port);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.set('view options', {layout: true});
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.methodOverride());
-app.use(app.router);
-app.use(require('less-middleware')({ src: path.join(__dirname, 'public') }));
+// app.use(express.favicon());
+// app.use(express.logger('dev'));
+// app.use(express.json());
+// app.use(express.urlencoded());
+// app.use(express.methodOverride());
+// app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' === app.get('env')) {
-  app.use(express.errorHandler());
+  // app.use(express.errorHandler());
 }
 
 //The routes.
@@ -71,7 +70,7 @@ var usernames = {};
 io.set('transports', ['xhr-polling']);
 //The io events.
 io.sockets.on('connection', function(socket) {
- 
+
     /**
      * This is where Firebase node refrences are kept.
      */
@@ -91,13 +90,13 @@ io.sockets.on('connection', function(socket) {
     /**
      * Fire data change events.
      */
- 
+
     //Update the users when a user has joined or left.
     var addUser = function(snapShot) {
         var data = {};
         data.id = snapShot.name();
         data.username = snapShot.val();
-        socket.emit('insert_user', data); 
+        socket.emit('insert_user', data);
     };
 
     var removeUser = function(snapShot) {
@@ -116,7 +115,7 @@ io.sockets.on('connection', function(socket) {
                 } else {
                     console.log("Session has ended, all data removed.");
                 }
-           }); 
+           });
         }
 
     };
@@ -126,10 +125,10 @@ io.sockets.on('connection', function(socket) {
         if (snapShot.val() === null) {
             console.log("No Topic Found");
         } else {
-            var data = {}; 
+            var data = {};
             data.user = socket.username;
             data.topic = snapShot.val().topic;
-            data.topicId = snapShot.name(); 
+            data.topicId = snapShot.name();
             socket.emit('insert_topic', data);
         }
     };
@@ -204,6 +203,6 @@ io.sockets.on('connection', function(socket) {
     //This will create a listener when a reply is inserted on the client side.
     socket.on('create_reply_listener', function(topicId) {
         fireTopics[topicId] = fireBoard.child(topicId).child('replies');
-        fireTopics[topicId].on('child_added', addReply); 
+        fireTopics[topicId].on('child_added', addReply);
     });
 });
